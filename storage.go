@@ -36,9 +36,9 @@ func OpenDataBase() error {
         username TEXT NOT NULL,
         created_at TEXT NOT NULL,
         updated_at TEXT NOT NULL,
-        data TEXT NOT NULL,
-        state INTEGER NOT NULL
-
+        data JSONB NOT NULL,
+        state INTEGER NOT NULL,
+		FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
     );`
 
 	_, err = DB.Exec(createBasketsTable)
